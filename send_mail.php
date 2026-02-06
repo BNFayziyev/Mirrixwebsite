@@ -4,7 +4,7 @@
 header('Content-Type: application/json');
 
 // 1. Configuration
-$recipient_email = "info@mirrixcorp.com"; // UPDATE THIS to your real email
+$recipient_email = "boburjonfayziyev5@gmai.com"; // UPDATE THIS to your real email info@mirrixcorp.com
 $subject_prefix = "[Website Quote Request]";
 
 // 2. Check if the request is POST
@@ -47,4 +47,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(403);
     echo json_encode(["status" => "error", "message" => "Method not allowed."]);
 }
+
 ?>
