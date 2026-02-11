@@ -37,6 +37,8 @@
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
+        /* Better long-text wrapping for policies */
+        .policy-text { overflow-wrap: anywhere; word-break: break-word; }
     </style>
 </head>
 <body class="text-apple-text bg-white">
@@ -63,7 +65,7 @@
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-black focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-black focus:outline-none" aria-label="Open menu">
                         <i data-lucide="menu" class="h-6 w-6"></i>
                     </button>
                 </div>
@@ -216,9 +218,24 @@
         </section>
 
         <section id="contact" class="py-20 max-w-4xl mx-auto px-4">
-            <div class="text-center mb-12">
+            <div class="text-center mb-6">
                 <h2 class="text-4xl font-semibold mb-4">Get in touch.</h2>
                 <p class="text-gray-500">Request a quote or manage your logistics.</p>
+
+                <!-- ✅ SMS CONSENT LINE (placed between the two lines and the form, like screenshot) -->
+                <div class="mt-6 max-w-3xl mx-auto text-left">
+                    <label class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                        <input id="sms-consent" name="sms_consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-apple-blue focus:ring-apple-blue">
+                        <span class="policy-text">
+                            By checking this box, I consent to receive text messages related to (message type) from (company name).
+                            You can reply "STOP" at any time to opt-out. Message and data rates may apply. Message frequency may vary,
+                            text HELP for assistance. For more information, please visit our
+                            <a href="#privacy" class="text-apple-blue hover:underline font-medium">Privacy Policy</a>
+                            and
+                            <a href="#sms-terms" class="text-apple-blue hover:underline font-medium">SMS Terms and Conditions</a>.
+                        </span>
+                    </label>
+                </div>
             </div>
 
             <div class="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
@@ -274,8 +291,6 @@
                         Send Request
                     </button>
                     <p id="error-msg" class="text-red-500 text-sm text-center hidden"></p>
-
-                    <!-- OPTIONAL: If you add SMS consent checkbox later, you can place it here -->
                 </form>
             </div>
 
@@ -296,7 +311,7 @@
         </section>
     </main>
 
-    <!-- PRIVACY POLICY PAGE CONTENT (shown when clicking Privacy Policy) -->
+    <!-- PRIVACY POLICY PAGE -->
     <section id="privacy-page" class="hidden pt-24 md:pt-28 pb-16 px-4 bg-white">
         <div class="max-w-4xl mx-auto">
             <div class="flex items-center justify-between gap-4 mb-8">
@@ -304,12 +319,12 @@
                     <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-black">Privacy Policy</h1>
                     <p class="text-gray-500 mt-2">Mirrix Corp</p>
                 </div>
-                <a href="#home" id="back-to-site" class="inline-flex items-center gap-2 text-apple-blue font-medium hover:underline">
+                <a href="#home" class="inline-flex items-center gap-2 text-apple-blue font-medium hover:underline">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
                 </a>
             </div>
 
-            <div class="bg-apple-gray rounded-3xl p-6 md:p-10">
+            <div class="bg-apple-gray rounded-3xl p-6 md:p-10 policy-text">
                 <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">Privacy policy</h2>
 
                 <p class="text-gray-700 leading-relaxed">
@@ -320,7 +335,7 @@
 
                 <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">SMS Terms &amp; Conditions</h2>
 
-                <div class="space-y-6 text-gray-700 leading-relaxed">
+                <div class="space-y-6 text-gray-700 leading-relaxed" id="sms-terms-content">
                     <div>
                         <h3 class="font-semibold text-black mb-2">1- SMS Consent Communication:</h3>
                         <p>The information (Phone Numbers) obtained as part of the SMS consent process will not be shared with third parties for marketing purposes.</p>
@@ -388,6 +403,39 @@
         </div>
     </section>
 
+    <!-- TERMS OF USE PAGE -->
+    <section id="terms-page" class="hidden pt-24 md:pt-28 pb-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-black">Terms of Use</h1>
+                    <p class="text-gray-500 mt-2">Mirrix Corp</p>
+                </div>
+                <a href="#home" class="inline-flex items-center gap-2 text-apple-blue font-medium hover:underline">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+                </a>
+            </div>
+
+            <div class="bg-apple-gray rounded-3xl p-6 md:p-10 policy-text text-gray-700 leading-relaxed space-y-4">
+                <p><strong>Terms of Use</strong></p>
+                <p>This website is provided by Mirrix Corp for informational purposes. By accessing or using this site, you agree to these Terms of Use.</p>
+                <p><strong>1) Use of Website</strong><br>Use the site lawfully and do not attempt to disrupt or compromise the website, servers, or networks.</p>
+                <p><strong>2) No Guarantees</strong><br>Information on this site is provided “as is” without warranties of any kind. Rates, availability, and service terms may change.</p>
+                <p><strong>3) Limitation of Liability</strong><br>Mirrix Corp will not be liable for any indirect, incidental, special, or consequential damages arising from use of this website.</p>
+                <p><strong>4) Third-Party Links</strong><br>The site may contain links to third-party websites. Mirrix Corp is not responsible for the content or practices of those sites.</p>
+                <p><strong>5) Intellectual Property</strong><br>All content on this site (text, layout, branding) is owned by Mirrix Corp or its licensors and may not be reused without permission.</p>
+                <p><strong>6) Changes</strong><br>We may update these Terms of Use at any time. Continued use of the website indicates acceptance of the updated terms.</p>
+                <p><strong>7) Contact</strong><br>For questions, contact us at <a class="text-apple-blue hover:underline" href="mailto:info@mirrixcorp.com">info@mirrixcorp.com</a>.</p>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="#home" class="inline-flex items-center justify-center gap-2 bg-apple-blue text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition-colors">
+                    Back to Website <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Functional Form Logic
         const form = document.getElementById('quote-form');
@@ -398,11 +446,23 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            // Optional: if you want to REQUIRE sms consent checkbox, uncomment below
+            // const smsConsent = document.getElementById('sms-consent');
+            // if (!smsConsent.checked) {
+            //     errorMsg.textContent = 'Please check the SMS consent box to continue.';
+            //     errorMsg.classList.remove('hidden');
+            //     return;
+            // }
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Sending...';
             errorMsg.classList.add('hidden');
 
             const formData = new FormData(form);
+
+            // Add SMS consent value into the POST (keeps everything, does not remove anything)
+            const smsConsent = document.getElementById('sms-consent');
+            formData.append('sms_consent', smsConsent && smsConsent.checked ? 'yes' : 'no');
 
             try {
                 const response = await fetch('send_mail.php', {
@@ -495,7 +555,6 @@
 
         // Intersection Observer for Fade-in animations
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -509,19 +568,39 @@
             document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
         }
 
-        // Simple hash router: show Privacy page when #privacy, otherwise show main site
+        // Simple hash router: show Privacy or Terms page, otherwise show main
         const mainContent = document.getElementById('main-content');
         const privacyPage = document.getElementById('privacy-page');
+        const termsPage = document.getElementById('terms-page');
+
+        function hideAllPages() {
+            mainContent.classList.add('hidden');
+            privacyPage.classList.add('hidden');
+            termsPage.classList.add('hidden');
+        }
 
         function showMain() {
-            privacyPage.classList.add('hidden');
+            hideAllPages();
             mainContent.classList.remove('hidden');
             attachFadeInObserver();
         }
 
-        function showPrivacy() {
-            mainContent.classList.add('hidden');
+        function showPrivacy(scrollToSmsTerms = false) {
+            hideAllPages();
             privacyPage.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (scrollToSmsTerms) {
+                setTimeout(() => {
+                    const el = document.getElementById('sms-terms-content');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+            }
+        }
+
+        function showTerms() {
+            hideAllPages();
+            termsPage.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -529,20 +608,23 @@
             const hash = (window.location.hash || '#home').toLowerCase();
 
             if (hash === '#privacy') {
-                showPrivacy();
+                showPrivacy(false);
+                return;
+            }
+            if (hash === '#sms-terms') {
+                showPrivacy(true);
+                return;
+            }
+            if (hash === '#terms') {
+                showTerms();
                 return;
             }
 
-            // For any other route (including #terms), show main
             showMain();
 
-            // Smooth scroll to section if exists (and not privacy)
             const targetId = hash.replace('#', '');
             const el = document.getElementById(targetId);
-            if (el) {
-                // slight delay for layout
-                setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50);
-            }
+            if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50);
         }
 
         // Close mobile menu on navigation click
