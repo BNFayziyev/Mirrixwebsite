@@ -7,14 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         'apple-blue': '#0071e3',
                         'apple-dark': '#1d1d1f',
@@ -26,20 +24,14 @@
         }
     </script>
     <style>
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             will-change: opacity, visibility;
         }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: none;
-        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
         .glass-nav {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: saturate(180%) blur(20px);
@@ -53,19 +45,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-12">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-xl font-semibold tracking-tight">Mirrix<span class="text-gray-500">Corp</span></a>
+                    <a href="#home" class="text-xl font-semibold tracking-tight">Mirrix<span class="text-gray-500">Corp</span></a>
                 </div>
-                
+
                 <div class="hidden md:flex space-x-8 text-xs font-medium text-gray-600 tracking-wide">
-                    <a href="#services" class="hover:text-apple-blue transition-colors">Services</a>
-                    <a href="#about" class="hover:text-apple-blue transition-colors">About</a>
-                    <a href="#safety" class="hover:text-apple-blue transition-colors">Safety</a>
-                    <a href="#careers" class="hover:text-apple-blue transition-colors">Careers</a>
-                    <a href="#contact" class="hover:text-apple-blue transition-colors">Contact</a>
+                    <a href="#services" class="hover:text-apple-blue transition-colors nav-link">Services</a>
+                    <a href="#about" class="hover:text-apple-blue transition-colors nav-link">About</a>
+                    <a href="#safety" class="hover:text-apple-blue transition-colors nav-link">Safety</a>
+                    <a href="#careers" class="hover:text-apple-blue transition-colors nav-link">Careers</a>
+                    <a href="#contact" class="hover:text-apple-blue transition-colors nav-link">Contact</a>
                 </div>
 
                 <div class="hidden md:flex">
-                    <a href="#contact" class="bg-apple-blue text-white text-xs px-4 py-1.5 rounded-full hover:bg-blue-600 transition-colors">
+                    <a href="#contact" class="bg-apple-blue text-white text-xs px-4 py-1.5 rounded-full hover:bg-blue-600 transition-colors nav-link">
                         Request a Quote
                     </a>
                 </div>
@@ -80,222 +72,319 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 absolute w-full">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#services" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue">Services</a>
-                <a href="#about" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue">About</a>
-                <a href="#safety" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue">Safety</a>
-                <a href="#contact" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue">Contact</a>
+                <a href="#services" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue nav-link">Services</a>
+                <a href="#about" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue nav-link">About</a>
+                <a href="#safety" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue nav-link">Safety</a>
+                <a href="#contact" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-apple-blue nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-16 md:pt-48 md:pb-32 px-4 text-center max-w-7xl mx-auto fade-in-section">
-        <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-4 text-black">
-            Reliable Freight Solutions.
-        </h1>
-        <h2 class="text-3xl md:text-5xl font-medium text-gray-500 tracking-tight mb-8">
-            Across America.
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
-            Mirrix Corp delivers nationwide logistics with the precision and speed your business demands.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-            <a href="#contact" class="bg-apple-blue text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105">
-                Book a Load
-            </a>
-            <a href="#contact" class="text-apple-blue px-8 py-3 rounded-full text-lg font-medium hover:underline flex items-center justify-center gap-2">
-                Contact Us <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </a>
-        </div>
-        
-        <div class="relative w-full h-64 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl mx-auto">
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" alt="Mirrix Truck on Highway" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        </div>
-    </section>
+    <!-- MAIN SITE CONTENT -->
+    <main id="main-content">
+        <section id="home" class="pt-32 pb-16 md:pt-48 md:pb-32 px-4 text-center max-w-7xl mx-auto fade-in-section">
+            <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-4 text-black">
+                Reliable Freight Solutions.
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-medium text-gray-500 tracking-tight mb-8">
+                Across America.
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+                Mirrix Corp delivers nationwide logistics with the precision and speed your business demands.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                <a href="#contact" class="bg-apple-blue text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105 nav-link">
+                    Book a Load
+                </a>
+                <a href="#contact" class="text-apple-blue px-8 py-3 rounded-full text-lg font-medium hover:underline flex items-center justify-center gap-2 nav-link">
+                    Contact Us <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
 
-    <section id="services" class="py-20 bg-white px-4">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="text-3xl md:text-5xl font-semibold mb-12 text-center tracking-tight">Logistics, redefined.</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-apple-gray rounded-3xl p-8 md:p-12 h-[500px] flex flex-col justify-between overflow-hidden relative group fade-in-section">
-                    <div class="z-10">
-                        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Over-The-Road</h4>
-                        <h3 class="text-4xl font-semibold mb-4 text-black">Long-Haul Excellence.</h3>
-                        <p class="text-gray-600 max-w-md">Coast-to-coast dry van services tailored for high-capacity requirements.</p>
-                        <a href="#contact" class="inline-block mt-4 text-apple-blue font-medium hover:underline">Request OTR Quote &rarr;</a>
+            <div class="relative w-full h-64 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl mx-auto">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" alt="Mirrix Truck on Highway" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-white px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-3xl md:text-5xl font-semibold mb-12 text-center tracking-tight">Logistics, redefined.</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-apple-gray rounded-3xl p-8 md:p-12 h-[500px] flex flex-col justify-between overflow-hidden relative group fade-in-section">
+                        <div class="z-10">
+                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Over-The-Road</h4>
+                            <h3 class="text-4xl font-semibold mb-4 text-black">Long-Haul Excellence.</h3>
+                            <p class="text-gray-600 max-w-md">Coast-to-coast dry van services tailored for high-capacity requirements.</p>
+                            <a href="#contact" class="inline-block mt-4 text-apple-blue font-medium hover:underline nav-link">Request OTR Quote &rarr;</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1586191582114-e51bbd6fc7b9?q=80&w=1500&auto=format&fit=crop" class="absolute right-0 bottom-0 w-3/4 md:w-2/3 rounded-tl-xl shadow-lg transition-transform duration-700 group-hover:scale-105" alt="OTR Truck">
                     </div>
-                    <img src="https://images.unsplash.com/photo-1586191582114-e51bbd6fc7b9?q=80&w=1500&auto=format&fit=crop" class="absolute right-0 bottom-0 w-3/4 md:w-2/3 rounded-tl-xl shadow-lg transition-transform duration-700 group-hover:scale-105" alt="OTR Truck">
+
+                    <div class="bg-apple-gray rounded-3xl p-8 md:p-12 h-[500px] flex flex-col justify-between overflow-hidden relative group fade-in-section">
+                        <div class="z-10">
+                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Dedicated Regional</h4>
+                            <h3 class="text-4xl font-semibold mb-4 text-black">Local Precision.</h3>
+                            <p class="text-gray-600 max-w-md">Consistent routes and delivery schedules for your regional distribution needs.</p>
+                            <a href="#contact" class="inline-block mt-4 text-apple-blue font-medium hover:underline nav-link">Explore Regional &rarr;</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1500&auto=format&fit=crop" class="absolute right-0 bottom-0 w-3/4 md:w-2/3 rounded-tl-xl shadow-lg transition-transform duration-700 group-hover:scale-105" alt="Regional Delivery">
+                    </div>
+
+                    <div class="md:col-span-2 bg-black text-white rounded-3xl p-8 md:p-16 relative overflow-hidden h-[400px] flex flex-col justify-center items-center text-center fade-in-section">
+                        <div class="z-10 relative">
+                            <h3 class="text-4xl md:text-5xl font-semibold mb-4">Time-Critical? Done.</h3>
+                            <p class="text-gray-300 max-w-2xl mx-auto text-lg mb-8">Expedited shipping solutions for when tomorrow is too late.</p>
+                            <a href="#contact" class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors nav-link">
+                                Get Expedited Rate
+                            </a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1494412574643-35d32468817e?q=80&w=2053&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 bg-black text-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6">Why Mirrix.</h2>
+                    <p class="text-xl text-gray-400">Driven by safety. Powered by technology.</p>
                 </div>
 
-                <div class="bg-apple-gray rounded-3xl p-8 md:p-12 h-[500px] flex flex-col justify-between overflow-hidden relative group fade-in-section">
-                    <div class="z-10">
-                        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Dedicated Regional</h4>
-                        <h3 class="text-4xl font-semibold mb-4 text-black">Local Precision.</h3>
-                        <p class="text-gray-600 max-w-md">Consistent routes and delivery schedules for your regional distribution needs.</p>
-                        <a href="#contact" class="inline-block mt-4 text-apple-blue font-medium hover:underline">Explore Regional &rarr;</a>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="fade-in-section delay-100">
+                        <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Unwavering Safety</h3>
+                        <p class="text-gray-400">Industry-leading safety standards and strict adherence to federal regulations protect your cargo.</p>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1500&auto=format&fit=crop" class="absolute right-0 bottom-0 w-3/4 md:w-2/3 rounded-tl-xl shadow-lg transition-transform duration-700 group-hover:scale-105" alt="Regional Delivery">
+                    <div class="fade-in-section delay-200">
+                        <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
+                            <i data-lucide="clock" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Reliability First</h3>
+                        <p class="text-gray-400">99% on-time delivery rate. We view every shipment as a promise kept.</p>
+                    </div>
+                    <div class="fade-in-section delay-300">
+                        <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
+                            <i data-lucide="truck" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Modern Fleet</h3>
+                        <p class="text-gray-400">High-capacity dry vans and newer model tractors minimize downtime and maximize efficiency.</p>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="md:col-span-2 bg-black text-white rounded-3xl p-8 md:p-16 relative overflow-hidden h-[400px] flex flex-col justify-center items-center text-center fade-in-section">
-                    <div class="z-10 relative">
-                        <h3 class="text-4xl md:text-5xl font-semibold mb-4">Time-Critical? Done.</h3>
-                        <p class="text-gray-300 max-w-2xl mx-auto text-lg mb-8">Expedited shipping solutions for when tomorrow is too late.</p>
-                        <a href="#contact" class="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
-                            Get Expedited Rate
+        <section id="safety" class="py-12 bg-gray-50 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="text-sm font-semibold uppercase text-gray-500 tracking-wider mb-1">Official Compliance</h4>
+                    <p class="text-2xl font-semibold text-black">Fully Licensed & Insured</p>
+                </div>
+                <div class="flex gap-8 text-gray-600 font-mono text-sm">
+                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
+                        <span class="block text-gray-400 text-xs">USDOT Number</span>
+                        <span class="font-semibold text-black">4104350</span>
+                    </div>
+                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
+                        <span class="block text-gray-400 text-xs">MC Number</span>
+                        <span class="font-semibold text-black">1566314</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="careers" class="py-20 px-4">
+            <div class="max-w-7xl mx-auto bg-apple-gray rounded-3xl overflow-hidden flex flex-col md:flex-row fade-in-section">
+                <div class="md:w-1/2 p-12 flex flex-col justify-center">
+                    <h2 class="text-4xl font-semibold mb-6">Drive for Mirrix.</h2>
+                    <p class="text-lg text-gray-600 mb-8">Join a team that values your time and safety. Competitive pay, modern equipment, and consistent miles for CDL professionals.</p>
+                    <div>
+                        <a href="mailto:info@mirrixcorp.com?subject=Driver Application" class="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
+                            Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1494412574643-35d32468817e?q=80&w=2053&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                </div>
+                <div class="md:w-1/2 h-64 md:h-auto bg-gray-200 relative">
+                    <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?q=80&w=1500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="py-24 bg-black text-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 fade-in-section">
-                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6">Why Mirrix.</h2>
-                <p class="text-xl text-gray-400">Driven by safety. Powered by technology.</p>
+        <section id="contact" class="py-20 max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold mb-4">Get in touch.</h2>
+                <p class="text-gray-500">Request a quote or manage your logistics.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <div class="fade-in-section delay-100">
-                    <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+
+                <div id="success-message" class="hidden absolute inset-0 bg-white z-10 flex-col items-center justify-center text-center p-8 fade-in-section">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="check" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-3">Unwavering Safety</h3>
-                    <p class="text-gray-400">Industry-leading safety standards and strict adherence to federal regulations protect your cargo.</p>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Request Sent!</h3>
+                    <p class="text-gray-500">Thank you. Our logistics team will review your details and contact you shortly.</p>
+                    <button onclick="resetForm()" class="mt-8 text-apple-blue font-medium hover:underline">Send another request</button>
                 </div>
-                <div class="fade-in-section delay-200">
-                    <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
-                        <i data-lucide="clock" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-3">Reliability First</h3>
-                    <p class="text-gray-400">99% on-time delivery rate. We view every shipment as a promise kept.</p>
-                </div>
-                <div class="fade-in-section delay-300">
-                    <div class="bg-gray-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
-                        <i data-lucide="truck" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-3">Modern Fleet</h3>
-                    <p class="text-gray-400">High-capacity dry vans and newer model tractors minimize downtime and maximize efficiency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="safety" class="py-12 bg-gray-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div class="mb-4 md:mb-0">
-                <h4 class="text-sm font-semibold uppercase text-gray-500 tracking-wider mb-1">Official Compliance</h4>
-                <p class="text-2xl font-semibold text-black">Fully Licensed & Insured</p>
-            </div>
-            <div class="flex gap-8 text-gray-600 font-mono text-sm">
-                <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="block text-gray-400 text-xs">USDOT Number</span>
-                    <span class="font-semibold text-black">4104350</span>
-                </div>
-                <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="block text-gray-400 text-xs">MC Number</span>
-                    <span class="font-semibold text-black">1566314</span>
-                </div>
-            </div>
-        </div>
-    </section>
+                <form id="quote-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="name">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
+                                placeholder="Jane Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="company">Company</label>
+                            <input type="text" id="company" name="company"
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
+                                placeholder="Company Inc.">
+                        </div>
+                    </div>
 
-    <section id="careers" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto bg-apple-gray rounded-3xl overflow-hidden flex flex-col md:flex-row fade-in-section">
-            <div class="md:w-1/2 p-12 flex flex-col justify-center">
-                <h2 class="text-4xl font-semibold mb-6">Drive for Mirrix.</h2>
-                <p class="text-lg text-gray-600 mb-8">Join a team that values your time and safety. Competitive pay, modern equipment, and consistent miles for CDL professionals.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="email">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
+                                placeholder="jane@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
+                                placeholder="(555) 123-4567">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="message">How can we help?</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
+                            placeholder="I need a quote for..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-apple-blue text-white font-medium py-3 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        Send Request
+                    </button>
+                    <p id="error-msg" class="text-red-500 text-sm text-center hidden"></p>
+
+                    <!-- OPTIONAL: If you add SMS consent checkbox later, you can place it here -->
+                </form>
+            </div>
+
+            <div class="mt-12 text-center">
+                <h4 class="text-lg font-semibold mb-4">Corporate Headquarters</h4>
+                <div class="bg-gray-100 rounded-2xl overflow-hidden h-64 w-full relative">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.387675765691!2d-84.39806548463255!3d39.46052827948771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88404561852b7e1b%3A0x1234567890abcdef!2s2601%20Verity%20Pkwy%2C%20Middletown%2C%20OH%2045044!5e0!3m2!1sen!2sus!4v1625680000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <p class="mt-4 text-gray-500">2601 Verity Pkwy, Building 36, Middletown, OH 45044</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- PRIVACY POLICY PAGE CONTENT (shown when clicking Privacy Policy) -->
+    <section id="privacy-page" class="hidden pt-24 md:pt-28 pb-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-between gap-4 mb-8">
                 <div>
-                    <a href="mailto:info@mirrixcorp.com?subject=Driver Application" class="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
-                        Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-black">Privacy Policy</h1>
+                    <p class="text-gray-500 mt-2">Mirrix Corp</p>
                 </div>
-            </div>
-            <div class="md:w-1/2 h-64 md:h-auto bg-gray-200 relative">
-                <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?q=80&w=1500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-20 max-w-4xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-semibold mb-4">Get in touch.</h2>
-            <p class="text-gray-500">Request a quote or manage your logistics.</p>
-        </div>
-
-        <div class="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
-            
-            <div id="success-message" class="hidden absolute inset-0 bg-white z-10 flex-col items-center justify-center text-center p-8 fade-in-section">
-                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <i data-lucide="check" class="w-8 h-8"></i>
-                </div>
-                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Request Sent!</h3>
-                <p class="text-gray-500">Thank you. Our logistics team will review your details and contact you shortly.</p>
-                <button onclick="resetForm()" class="mt-8 text-apple-blue font-medium hover:underline">Send another request</button>
+                <a href="#home" id="back-to-site" class="inline-flex items-center gap-2 text-apple-blue font-medium hover:underline">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+                </a>
             </div>
 
-            <form id="quote-form" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-apple-gray rounded-3xl p-6 md:p-10">
+                <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">Privacy policy</h2>
+
+                <p class="text-gray-700 leading-relaxed">
+                    "Mobile Opt in, SMS Consent,  and phone numbers collected for SMS communication purposes will not be shared with any third party and affiliates for marketing purposes."
+                </p>
+
+                <hr class="my-8 border-gray-200">
+
+                <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">SMS Terms &amp; Conditions</h2>
+
+                <div class="space-y-6 text-gray-700 leading-relaxed">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" for="name">Name</label>
-                        <input type="text" id="name" name="name" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors" 
-                            placeholder="Jane Doe">
+                        <h3 class="font-semibold text-black mb-2">1- SMS Consent Communication:</h3>
+                        <p>The information (Phone Numbers) obtained as part of the SMS consent process will not be shared with third parties for marketing purposes.</p>
                     </div>
+
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" for="company">Company</label>
-                        <input type="text" id="company" name="company"
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors" 
-                            placeholder="Company Inc.">
+                        <h3 class="font-semibold text-black mb-2">2- Types of SMS Communications:</h3>
+                        <p>If you have consented to receive text messages from Mirrix Corp, you may receive messages related to the following:</p>
+                        <ul class="list-disc pl-6 mt-2 space-y-1">
+                            <li>Delivery notifications</li>
+                            <li>Customer care</li>
+                            <li>Marketing</li>
+                            <li>Fraud alert messaging</li>
+                        </ul>
+                        <p class="mt-3">Example: "From [Mirrix Corp] Customer Care: Your support ticket #45821 has been created. We will keep you updated. You can reply STOP to opt out of SMS messaging from (Brand Name) at any time."</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">3- Message Frequency:</h3>
+                        <p>Message frequency may vary depending on the type of communication. For example, you may receive up to [X] SMS messages per week related to your [Delivery notifications].</p>
+                        <p class="mt-3">Example:</p>
+                        <p>"Message frequency may vary. You may receive up to 2 SMS messages per week regarding your appointments or account status."</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">4- Potential Fees for SMS Messaging:</h3>
+                        <p>Please note that standard message and data rates may apply, depending on your carrier’s pricing plan. These fees may vary if the message is sent domestically or internationally.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">5- Opt-In Method:</h3>
+                        <p>You may opt-in to receive SMS messages from Mirrix Corp in the following way.</p>
+                        <p class="mt-3">By submitting an online form</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">6- Opt-Out Method:</h3>
+                        <p>You can opt out of receiving SMS messages at any time. To do so, simply reply "STOP" to any SMS message you receive. Alternatively, you can contact us directly to request removal from our messaging list.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">7- Help:</h3>
+                        <p>If you are experiencing any issues, you can reply with the keyword HELP. Or, you can get help directly from us at (insert the link)</p>
+                        <p class="mt-3">Additional Options:</p>
+                        <p>If you do not wish to receive SMS messages, you can choose not to check the SMS consent box on our forms.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-black mb-2">8- Standard Messaging Disclosures:</h3>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>Message and data rates may apply.</li>
+                            <li>You can opt out at any time by texting "STOP."</li>
+                            <li>For assistance, text "HELP" or visit our [ https://www.mirrixcorp.com/] page.</li>
+                            <li>Message frequency may vary</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" for="email">Email</label>
-                        <input type="email" id="email" name="email" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors" 
-                            placeholder="jane@example.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone"
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors" 
-                            placeholder="(555) 123-4567">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2" for="message">How can we help?</label>
-                    <textarea id="message" name="message" rows="4" required
-                        class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors" 
-                        placeholder="I need a quote for..."></textarea>
-                </div>
-
-                <button type="submit" id="submit-btn" class="w-full bg-apple-blue text-white font-medium py-3 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                    Send Request
-                </button>
-                <p id="error-msg" class="text-red-500 text-sm text-center hidden"></p>
-            </form>
-        </div>
-
-        <div class="mt-12 text-center">
-            <h4 class="text-lg font-semibold mb-4">Corporate Headquarters</h4>
-            <div class="bg-gray-100 rounded-2xl overflow-hidden h-64 w-full relative">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.387675765691!2d-84.39806548463255!3d39.46052827948771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88404561852b7e1b%3A0x1234567890abcdef!2s2601%20Verity%20Pkwy%2C%20Middletown%2C%20OH%2045044!5e0!3m2!1sen!2sus!4v1625680000000!5m2!1sen!2sus" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
             </div>
-            <p class="mt-4 text-gray-500">2601 Verity Pkwy, Building 36, Middletown, OH 45044</p>
+
+            <div class="mt-8 text-center">
+                <a href="#home" class="inline-flex items-center justify-center gap-2 bg-apple-blue text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition-colors">
+                    Back to Website <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -308,26 +397,22 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // 1. UI Feedback: Disable button & show loading
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Sending...';
             errorMsg.classList.add('hidden');
 
-            // 2. Gather Data
             const formData = new FormData(form);
 
             try {
-                // 3. Send to PHP
                 const response = await fetch('send_mail.php', {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 const result = await response.json();
 
                 if (response.ok) {
-                    // 4. Success State
                     form.classList.add('hidden');
                     successMsg.classList.remove('hidden');
                     successMsg.classList.add('flex');
@@ -335,7 +420,6 @@
                     throw new Error(result.message || 'Something went wrong');
                 }
             } catch (error) {
-                // 5. Error State
                 errorMsg.textContent = error.message;
                 errorMsg.classList.remove('hidden');
                 submitBtn.disabled = false;
@@ -359,18 +443,18 @@
                 <div>
                     <h5 class="text-gray-900 font-semibold mb-3">Services</h5>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:underline">OTR Freight</a></li>
-                        <li><a href="#" class="hover:underline">Regional</a></li>
-                        <li><a href="#" class="hover:underline">Expedited</a></li>
-                        <li><a href="#" class="hover:underline">Fleet Management</a></li>
+                        <li><a href="#services" class="hover:underline nav-link">OTR Freight</a></li>
+                        <li><a href="#services" class="hover:underline nav-link">Regional</a></li>
+                        <li><a href="#services" class="hover:underline nav-link">Expedited</a></li>
+                        <li><a href="#services" class="hover:underline nav-link">Fleet Management</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="text-gray-900 font-semibold mb-3">Company</h5>
                     <ul class="space-y-2">
-                        <li><a href="#about" class="hover:underline">About Us</a></li>
-                        <li><a href="#careers" class="hover:underline">Careers</a></li>
-                        <li><a href="#safety" class="hover:underline">Safety & Compliance</a></li>
+                        <li><a href="#about" class="hover:underline nav-link">About Us</a></li>
+                        <li><a href="#careers" class="hover:underline nav-link">Careers</a></li>
+                        <li><a href="#safety" class="hover:underline nav-link">Safety & Compliance</a></li>
                     </ul>
                 </div>
                 <div>
@@ -390,8 +474,8 @@
             <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between">
                 <p>Copyright © 2024 Mirrix Corp. All rights reserved.</p>
                 <div class="flex space-x-4 mt-2 md:mt-0">
-                    <a href="#" class="hover:underline">Privacy Policy</a>
-                    <a href="#" class="hover:underline">Terms of Use</a>
+                    <a href="#privacy" class="hover:underline">Privacy Policy</a>
+                    <a href="#terms" class="hover:underline">Terms of Use</a>
                 </div>
             </div>
         </div>
@@ -410,24 +494,69 @@
         });
 
         // Intersection Observer for Fade-in animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
+        function attachFadeInObserver() {
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }
+
+        // Simple hash router: show Privacy page when #privacy, otherwise show main site
+        const mainContent = document.getElementById('main-content');
+        const privacyPage = document.getElementById('privacy-page');
+
+        function showMain() {
+            privacyPage.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            attachFadeInObserver();
+        }
+
+        function showPrivacy() {
+            mainContent.classList.add('hidden');
+            privacyPage.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleRoute() {
+            const hash = (window.location.hash || '#home').toLowerCase();
+
+            if (hash === '#privacy') {
+                showPrivacy();
+                return;
+            }
+
+            // For any other route (including #terms), show main
+            showMain();
+
+            // Smooth scroll to section if exists (and not privacy)
+            const targetId = hash.replace('#', '');
+            const el = document.getElementById(targetId);
+            if (el) {
+                // slight delay for layout
+                setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50);
+            }
+        }
+
+        // Close mobile menu on navigation click
+        document.querySelectorAll('a.nav-link').forEach(a => {
+            a.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
         });
+
+        window.addEventListener('hashchange', handleRoute);
+
+        // Initial load
+        attachFadeInObserver();
+        handleRoute();
     </script>
 </body>
 </html>
