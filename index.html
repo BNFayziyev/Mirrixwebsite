@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirrix Corp | Reliable Freight Solutions</title>
+
+    <!-- ✅ Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NF14QH53T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4NF14QH53T');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -37,8 +47,11 @@
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
-        /* Better long-text wrapping for policies */
         .policy-text { overflow-wrap: anywhere; word-break: break-word; }
+
+        /* (Optional) show link hover consistent */
+        .a-link { color: #0071e3; }
+        .a-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body class="text-apple-text bg-white">
@@ -222,7 +235,7 @@
                 <h2 class="text-4xl font-semibold mb-4">Get in touch.</h2>
                 <p class="text-gray-500">Request a quote or manage your logistics.</p>
 
-                <!-- ✅ SMS CONSENT LINE (placed between the two lines and the form, like screenshot) -->
+                <!-- ✅ SMS CONSENT LINE (like screenshot, with clickable links) -->
                 <div class="mt-6 max-w-3xl mx-auto text-left">
                     <label class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
                         <input id="sms-consent" name="sms_consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-apple-blue focus:ring-apple-blue">
@@ -437,6 +450,11 @@
     </section>
 
     <script>
+        // ✅ GA4 events helper (optional but useful)
+        function trackEvent(name, params = {}) {
+            if (typeof gtag === 'function') gtag('event', name, params);
+        }
+
         // Functional Form Logic
         const form = document.getElementById('quote-form');
         const successMsg = document.getElementById('success-message');
@@ -446,23 +464,18 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Optional: if you want to REQUIRE sms consent checkbox, uncomment below
-            // const smsConsent = document.getElementById('sms-consent');
-            // if (!smsConsent.checked) {
-            //     errorMsg.textContent = 'Please check the SMS consent box to continue.';
-            //     errorMsg.classList.remove('hidden');
-            //     return;
-            // }
-
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Sending...';
             errorMsg.classList.add('hidden');
 
             const formData = new FormData(form);
 
-            // Add SMS consent value into the POST (keeps everything, does not remove anything)
+            // Add SMS consent value into the POST (keeps everything)
             const smsConsent = document.getElementById('sms-consent');
             formData.append('sms_consent', smsConsent && smsConsent.checked ? 'yes' : 'no');
+
+            // ✅ GA: track submit attempt
+            trackEvent('quote_form_submit', { sms_consent: smsConsent && smsConsent.checked ? 'yes' : 'no' });
 
             try {
                 const response = await fetch('send_mail.php', {
@@ -476,6 +489,9 @@
                     form.classList.add('hidden');
                     successMsg.classList.remove('hidden');
                     successMsg.classList.add('flex');
+
+                    // ✅ GA: track success
+                    trackEvent('quote_form_success');
                 } else {
                     throw new Error(result.message || 'Something went wrong');
                 }
@@ -484,6 +500,9 @@
                 errorMsg.classList.remove('hidden');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Send Request';
+
+                // ✅ GA: track error
+                trackEvent('quote_form_error', { message: String(error.message || '') });
             }
         });
 
@@ -494,6 +513,8 @@
             form.classList.remove('hidden');
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send Request';
+
+            trackEvent('quote_form_reset');
         }
     </script>
 
@@ -606,6 +627,11 @@
 
         function handleRoute() {
             const hash = (window.location.hash || '#home').toLowerCase();
+
+            // ✅ track page views in GA when route changes
+            if (typeof gtag === 'function') {
+                gtag('event', 'page_view', { page_location: window.location.href, page_path: hash });
+            }
 
             if (hash === '#privacy') {
                 showPrivacy(false);
