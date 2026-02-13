@@ -48,10 +48,6 @@
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
         .policy-text { overflow-wrap: anywhere; word-break: break-word; }
-
-        /* (Optional) show link hover consistent */
-        .a-link { color: #0071e3; }
-        .a-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body class="text-apple-text bg-white">
@@ -231,24 +227,9 @@
         </section>
 
         <section id="contact" class="py-20 max-w-4xl mx-auto px-4">
-            <div class="text-center mb-6">
+            <div class="text-center mb-12">
                 <h2 class="text-4xl font-semibold mb-4">Get in touch.</h2>
                 <p class="text-gray-500">Request a quote or manage your logistics.</p>
-
-                <!-- ✅ SMS CONSENT LINE (like screenshot, with clickable links) -->
-                <div class="mt-6 max-w-3xl mx-auto text-left">
-                    <label class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
-                        <input id="sms-consent" name="sms_consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-apple-blue focus:ring-apple-blue">
-                        <span class="policy-text">
-                            By checking this box, I consent to receive text messages related to (message type) from (company name).
-                            You can reply "STOP" at any time to opt-out. Message and data rates may apply. Message frequency may vary,
-                            text HELP for assistance. For more information, please visit our
-                            <a href="#privacy" class="text-apple-blue hover:underline font-medium">Privacy Policy</a>
-                            and
-                            <a href="#sms-terms" class="text-apple-blue hover:underline font-medium">SMS Terms and Conditions</a>.
-                        </span>
-                    </label>
-                </div>
             </div>
 
             <div class="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
@@ -298,6 +279,21 @@
                         <textarea id="message" name="message" rows="4" required
                             class="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-apple-blue focus:ring-0 transition-colors"
                             placeholder="I need a quote for..."></textarea>
+                    </div>
+
+                    <!-- ✅ MOVE SMS CONSENT: right above the button -->
+                    <div class="max-w-3xl mx-auto text-left">
+                        <label class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                            <input id="sms-consent" name="sms_consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="policy-text">
+                                By checking this box, I consent to receive text messages related to (message type) from (company name).
+                                You can reply "STOP" at any time to opt-out. Message and data rates may apply. Message frequency may vary,
+                                text HELP for assistance. For more information, please visit our
+                                <a href="#privacy" class="text-apple-blue hover:underline font-medium">Privacy Policy</a>
+                                and
+                                <a href="#sms-terms" class="text-apple-blue hover:underline font-medium">SMS Terms and Conditions</a>.
+                            </span>
+                        </label>
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-apple-blue text-white font-medium py-3 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
@@ -450,15 +446,14 @@
     </section>
 
     <script>
-        // ✅ GA4 events helper (optional but useful)
+        // ✅ GA helper (optional)
         function trackEvent(name, params = {}) {
             if (typeof gtag === 'function') gtag('event', name, params);
         }
 
-        // Functional Form Logic
+        // Functional Form Logic (NO ERROR EVER, ALWAYS SHOW SUCCESS)
         const form = document.getElementById('quote-form');
         const successMsg = document.getElementById('success-message');
-        const errorMsg = document.getElementById('error-msg');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', async function(e) {
@@ -466,44 +461,33 @@
 
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Sending...';
-            errorMsg.classList.add('hidden');
 
             const formData = new FormData(form);
-
-            // Add SMS consent value into the POST (keeps everything)
             const smsConsent = document.getElementById('sms-consent');
             formData.append('sms_consent', smsConsent && smsConsent.checked ? 'yes' : 'no');
 
-            // ✅ GA: track submit attempt
+            // ✅ GA: track submit
             trackEvent('quote_form_submit', { sms_consent: smsConsent && smsConsent.checked ? 'yes' : 'no' });
 
+            // ✅ TRY sending, but even if it fails -> still show success (NO ERROR UI)
             try {
-                const response = await fetch('send_mail.php', {
-                    method: 'POST',
-                    body: formData
-                });
+                const resp = await fetch('send_mail.php', { method: 'POST', body: formData });
 
-                const result = await response.json();
+                // don't block UI on parsing/json errors
+                try { await resp.json(); } catch (_) {}
 
-                if (response.ok) {
-                    form.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                    successMsg.classList.add('flex');
-
-                    // ✅ GA: track success
-                    trackEvent('quote_form_success');
-                } else {
-                    throw new Error(result.message || 'Something went wrong');
-                }
-            } catch (error) {
-                errorMsg.textContent = error.message;
-                errorMsg.classList.remove('hidden');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Send Request';
-
-                // ✅ GA: track error
-                trackEvent('quote_form_error', { message: String(error.message || '') });
+                // optional: you can track status, but don't show error
+                trackEvent('quote_form_request_done', { ok: !!resp.ok, status: resp.status });
+            } catch (err) {
+                // swallow any error, still success UI
+                trackEvent('quote_form_request_failed', { message: String(err && err.message ? err.message : err) });
             }
+
+            // ✅ ALWAYS show success
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('flex');
+            trackEvent('quote_form_success_shown');
         });
 
         function resetForm() {
@@ -513,7 +497,6 @@
             form.classList.remove('hidden');
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Send Request';
-
             trackEvent('quote_form_reset');
         }
     </script>
@@ -628,23 +611,14 @@
         function handleRoute() {
             const hash = (window.location.hash || '#home').toLowerCase();
 
-            // ✅ track page views in GA when route changes
+            // ✅ track SPA-ish page view
             if (typeof gtag === 'function') {
                 gtag('event', 'page_view', { page_location: window.location.href, page_path: hash });
             }
 
-            if (hash === '#privacy') {
-                showPrivacy(false);
-                return;
-            }
-            if (hash === '#sms-terms') {
-                showPrivacy(true);
-                return;
-            }
-            if (hash === '#terms') {
-                showTerms();
-                return;
-            }
+            if (hash === '#privacy') { showPrivacy(false); return; }
+            if (hash === '#sms-terms') { showPrivacy(true); return; }
+            if (hash === '#terms') { showTerms(); return; }
 
             showMain();
 
