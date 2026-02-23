@@ -390,7 +390,7 @@
         <div class="max-w-4xl mx-auto">
             <div class="flex items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-black">Terms and Conditions</h1>
+                    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-black">Terms of Use</h1>
                     <p class="text-gray-500 mt-2">Mirrix Corp</p>
                 </div>
                 <a href="#home" class="inline-flex items-center gap-2 text-apple-blue font-medium hover:underline">
@@ -399,6 +399,7 @@
             </div>
 
             <div class="bg-apple-gray rounded-3xl p-6 md:p-10 policy-text">
+                <!-- ✅ Terms of Use content (kept your existing "Terms and Conditions" statement here as you requested) -->
                 <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">Terms and Conditions</h2>
 
                 <p class="text-gray-700 leading-relaxed">
@@ -408,7 +409,16 @@
 
                 <hr class="my-8 border-gray-200">
 
-                <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">SMS Terms &amp; Conditions</h2>
+                <!-- ✅ SMS Terms and Conditions must also include the Terms and Conditions content -->
+                <h2 class="text-xl md:text-2xl font-semibold text-black mb-4">SMS Terms and Conditions</h2>
+
+                <!-- ✅ Put the same Terms and Conditions statement here too -->
+                <div class="bg-white/70 border border-gray-200 rounded-2xl p-4 mb-6">
+                    <p class="font-medium text-black">
+                        Mobile Opt in, SMS Consent, and phone numbers collected for SMS communication purposes will not be shared with any third party
+                        or affiliates for marketing purposes.
+                    </p>
+                </div>
 
                 <div class="space-y-6 text-gray-700 leading-relaxed" id="sms-terms-content">
                     <div>
@@ -572,7 +582,8 @@
                 <p>Copyright © 2024 Mirrix Corp. All rights reserved.</p>
                 <div class="flex space-x-4 mt-2 md:mt-0">
                     <a href="#privacy" class="hover:underline">Privacy Policy</a>
-                    <a href="#terms" class="hover:underline">Terms and Conditions</a>
+                    <!-- ✅ changed text to Terms of Use -->
+                    <a href="#terms" class="hover:underline">Terms of Use</a>
                 </div>
             </div>
         </div>
@@ -622,9 +633,16 @@
             attachFadeInObserver();
         }
 
-        function showPrivacy(scrollToSmsTerms = false) {
+        function showPrivacy() {
             hideAllPages();
             privacyPage.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ✅ sms-terms should open Terms page and scroll to SMS section
+        function showTerms(scrollToSmsTerms = false) {
+            hideAllPages();
+            termsPage.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if (scrollToSmsTerms) {
@@ -635,12 +653,6 @@
             }
         }
 
-        function showTerms() {
-            hideAllPages();
-            termsPage.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         function handleRoute() {
             const hash = (window.location.hash || '#home').toLowerCase();
 
@@ -649,9 +661,9 @@
                 gtag('event', 'page_view', { page_location: window.location.href, page_path: hash });
             }
 
-            if (hash === '#privacy') { showPrivacy(false); return; }
-            if (hash === '#sms-terms') { showPrivacy(true); return; }
-            if (hash === '#terms') { showTerms(); return; }
+            if (hash === '#privacy') { showPrivacy(); return; }
+            if (hash === '#terms') { showTerms(false); return; }
+            if (hash === '#sms-terms') { showTerms(true); return; }  // ✅ changed here
 
             showMain();
 
